@@ -1,0 +1,20 @@
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    document.getElementById("username").innerHTML = name;
+</script>
+<script>
+    // the below method is declared with function keyword so it is avaiable in global object, 
+    // it can be accessed from console with window.createPost & hacker can easily find this method.
+    function createPost(title, description){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/post", true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlcoded"
+        );
+        xhr.send(`txtName=${title}&mtxMessage=${description}`)
+    }
+    // when hacker hack this method, they can easily pass the title & descrition, show some wrong post on you profile(eg facebook).
+</script>
